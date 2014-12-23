@@ -18,12 +18,17 @@ describe PoemParser do
   end
 
   it "returns the title of a poem" do
-      input = PoemParser.new(@poem)
+    input = PoemParser.new(@poem)
 
-      expect(input.title).to eq("In Possum Land")
+    expect(input.title).to eq("In Possum Land")
   end
 
-  
+  it "returns the author of the poem" do
+    input = PoemParser.new(@poem)
+
+    expect(input.author).to eq("Henry Lawson")
+  end
+
 
 
 
