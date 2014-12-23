@@ -32,8 +32,13 @@ describe PoemParser do
   it "returns the number of verses in the poem" do
     input = PoemParser.new(@poem)
 
-    expect(input.verses).to eq(2)
+    expect(input.verse_count).to eq(2)
   end
 
+  it "returns the number of lines in a poem" do
+    input = PoemParser.new(@poem)
+
+    expect(input.line_count).to eq(8)
+  end
 
 end
