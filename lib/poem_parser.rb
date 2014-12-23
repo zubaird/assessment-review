@@ -3,6 +3,7 @@ class PoemParser
   attr_reader :poem_lines
 
   def initialize(poem)
+
     @poem = poem
     @poem_lines = poem.lines
   end
@@ -23,6 +24,19 @@ class PoemParser
     header_lines = 2
     extra_lines = header_lines + verse_count
     poem_lines.size - extra_lines
+  end
+
+  def hashify
+    poem_hash = {}
+    poem_verses_lines = {}
+
+    poem_verses_lines[title] = {
+      verses: verse_count,
+      lines: line_count,
+    }
+
+    poem_hash[author] = poem_verses_lines
+    poem_hash
   end
 
 end
