@@ -3,7 +3,6 @@ class PoemParser
   attr_reader :poem_lines
 
   def initialize(poem)
-
     @poem = poem
     @poem_lines = poem.lines
   end
@@ -40,3 +39,21 @@ class PoemParser
   end
 
 end
+
+
+
+dummy_data = "In Possum Land
+Henry Lawson
+
+In Possum Land the nights are fair,
+the streams are fresh and clear;
+no dust is in the moonlit air;
+no traffic jars the ear.
+
+With Possums gambolling overhead,
+'neath western stars so grand,
+Ah! would that we could make our bed
+tonight in Possum Land"
+
+poem_details = PoemParser.new(dummy_data)
+puts poem_details.hashify
