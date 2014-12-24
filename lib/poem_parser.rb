@@ -7,6 +7,10 @@ class PoemParser
     @poem_lines = poem.lines
   end
 
+  def access_files
+
+  end
+
   def title
     poem_lines.first.chomp
   end
@@ -35,25 +39,36 @@ class PoemParser
     }
 
     poem_hash[author] = poem_verses_lines
+
     poem_hash
   end
 
+  def roryify(file_path)
+    all_poems_hash = {}
+    Dir.glob(file_path).each do |poem_file|
+      poem = File.read(poem_file)
+      if all_poems_hash.has_key? author
+        all_poems_hash[author].store(
+        title,
+        {
+          verses: verse_count,
+          lines: line_count,
+        }
+        )
+      else
+        all_poems_hash[author] = poem.hashify
+      end
+    end
+    all_poems_hash
+  end
 end
 
+all_the_poems = File.join("**", "data", "**", "*.txt")
+files = Dir.glob(all_the_poems)
 
+files.each do |file|
+  raw_file = File.read(file)
+  PoemParser.new(raw_file)
+  p PoemParser.new(raw_file).hashify
 
-dummy_data = "In Possum Land
-Henry Lawson
-
-In Possum Land the nights are fair,
-the streams are fresh and clear;
-no dust is in the moonlit air;
-no traffic jars the ear.
-
-With Possums gambolling overhead,
-'neath western stars so grand,
-Ah! would that we could make our bed
-tonight in Possum Land"
-
-poem_details = PoemParser.new(dummy_data)
-puts poem_details.hashify
+end

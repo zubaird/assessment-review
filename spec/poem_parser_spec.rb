@@ -58,9 +58,6 @@ describe PoemParser do
 
   it "Returns all the files in a directory" do
 
-    all_the_poems = File.join("**", "data", "**", "*.txt")
-
-    files = Dir.glob(all_the_poems)
 
     expected = [
       "data/poem_01.txt",
@@ -74,7 +71,7 @@ describe PoemParser do
       "data/poem_09.txt",
       ]
 
-      expect(files).to eq(expected)
+      expect(access_files).to eq(expected)
   end
 
 end
